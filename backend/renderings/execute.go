@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-package handlers
+package renderings
 
-import (
-	"net/http"
+type ExecuteResponse struct {
+	EncodedOutput string
+	DecodedOutput DecodedOutput
+	Cost          int
+	ExecutionTime int
+}
 
-	"github.com/labstack/echo"
-)
-
-func Ping(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, World!")
+type DecodedOutput struct {
+	Type  string
+	Value string
 }

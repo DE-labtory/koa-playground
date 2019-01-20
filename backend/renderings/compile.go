@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package handlers
+package renderings
 
 import (
-	"net/http"
-
-	"github.com/labstack/echo"
+	"github.com/DE-labtory/koa/abi"
 )
 
-func Ping(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, World!")
+type CompileResponse struct {
+	ABI         abi.ABI
+	RawByteCode []byte
+	ASM         []string
 }

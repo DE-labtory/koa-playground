@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-package handlers
+package bindings
 
-import (
-	"net/http"
+// URL : /execute
+type ExecuteRequest struct {
+	Address          string
+	FunctionSelector string
+	Params           []Param
+}
 
-	"github.com/labstack/echo"
-)
-
-func Ping(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, World!")
+type Param struct {
+	Type  string
+	Value string
 }

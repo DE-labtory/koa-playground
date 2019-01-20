@@ -14,14 +14,8 @@
  * limitations under the License.
  */
 
-package handlers
+package renderings
 
-import (
-	"net/http"
-
-	"github.com/labstack/echo"
-)
-
-func Ping(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, World!")
+type DeployResponse struct {
+	Address string
 }
