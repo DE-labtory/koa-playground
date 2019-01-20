@@ -14,14 +14,9 @@
  * limitations under the License.
  */
 
-package handlers
+package bindings
 
-import (
-	"net/http"
-
-	"github.com/labstack/echo"
-)
-
-func Ping(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, World!")
+// URL : /compile
+type CompileRequest struct {
+	Code string
 }

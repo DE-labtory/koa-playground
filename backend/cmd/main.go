@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-
 package main
 
 import (
+	"github.com/DE-labtory/koa-playground/backend/handlers"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/DE-labtory/koa-playground/backend/handlers"
 )
 
 func main() {
