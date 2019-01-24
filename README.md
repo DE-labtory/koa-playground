@@ -2,6 +2,20 @@
 
 koa-playground provides an environment where you can easily test and run the language of your [koa project](https://github.com/DE-labtory/koa).
 
+### The difference between koa-playground and other editors
+
+koa used in koa-playground is different from the general programming languages. Similarly, koa program also has difference from the general programs. First, koa has `deploy` step. This step deliveries an information of the contract to the `vm`. And, user needs to `call` the function in order to run the program.
+
+Thus, you should use koa-playground which supports the above, if you want to make and execute the koa program!
+
+### Koa-Playground Architecture
+
+<p align="center"><img src="./image/playground-architecture.jpg" weight="510" height="240px"></p>
+
+`Front End` has two components. `Editor` is the code editor using koa. `Console` shows the result of running the program.
+
+`Back End` also has two components. `Compiler` receives the source code from `Editor`. Then, compiles code and returns `Bytecode`. If `Console` deploys the bytecode, `Virtual Machine` saves it and returns the address of the contract deployed. When the user calls the function, call data is delivered to `Virtual Machine`. `Virtual Machine` executes it and returns the ouput of that function call.
+
 ### Back End
 
 koa-playground uses `HTTP protocol`. It has 3 communications. Also, all data is encoded in UTF-8.
