@@ -1,0 +1,24 @@
+language: go
+
+env:
+  - GO111MODULE=on
+go:
+  - 1.11.x
+
+git:
+  depth: 1
+
+install: true
+- go get golang.org/x/tools/cmd/goimports
+- go get golang.org/x/tools/cmd/cover
+- go get github.com/mattn/goveralls
+- go mod vendor
+
+notifications:
+  email: false
+
+script:
+- if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./travis/run_on_pull_requests.sh; fi
+- if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./travis/run_on_non_pull_requests.sh; fi
+- golangci-lint run
+- go test -race ./...
