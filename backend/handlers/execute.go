@@ -15,3 +15,38 @@
  */
 
 package handlers
+
+import (
+	"github.com/labstack/echo"
+	"net/http"
+	"github.com/DE-labtory/koa-playground/backend/bindings"
+	"github.com/labstack/gommon/log"
+	"github.com/DE-labtory/koa-playground/backend/renderings"
+	"math"
+	"time"
+)
+
+func Execute(c echo.Context) error {
+
+	//request := c.Param("ExecuteRequest")
+	request := &bindings.ExecuteRequest{
+		Address:          address,
+		FunctionSelector: "I LIKE GOLANG!",
+		Params:           []bindings.Param{},
+	}
+
+	log.Debug(request)
+
+	decodedOutput := &renderings.DecodedOutput{Type: "type", Value: "value",}
+
+	log.Debug(decodedOutput)
+
+	response := &renderings.ExecuteResponse{
+		EncodedOutput: "encodedOutput",
+		DecodedOutput: *decodedOutput,
+		Cost:          int(math.MaxUint64 >> 1),
+		ExecutionTime: int(time.Now().Unix()),
+	}
+
+	return c.JSON(http.StatusOK, response)
+}

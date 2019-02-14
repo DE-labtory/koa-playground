@@ -33,6 +33,11 @@ func main() {
 	// Routes
 	e.GET("/", handlers.Ping)
 
+	e.POST("/compile", handlers.Compile)
+	e.POST("/deploy", handlers.Deploy)
+	e.POST("/execute", handlers.Execute)
+
+
 	// Start server
 	e.Logger.Fatal(e.Start(":1323"))
 }

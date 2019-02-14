@@ -19,4 +19,5 @@ package bindings
 // URL : /deploy
 type DeployRequest struct {
 	RawByteCode string
+	DateTime    string
 }
