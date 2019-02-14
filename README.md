@@ -24,7 +24,7 @@ type CompileRequest struct {
 type CompileResponse struct {
     ABI             abi
     RawByteCode     []byte
-    Asm             []string
+    ASM             []string
 }
 ```
 
