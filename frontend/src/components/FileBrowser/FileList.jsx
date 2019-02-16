@@ -6,25 +6,28 @@ import actions from '../../redux/actions';
 
 class FileList extends Component {
     render() {
-        const { fileList } = this.props;
+        const { fileListObject } = this.props;
 
         return (
             <ul>
-                { Object.keys(fileList).map(file => (
-                    <li
-                        key={file}
-                        onClick={() => this.props.selectFile(file)}
-                    >
-                        {file}
-                        <button
-                            key={file + 'delete btn'}
-                            onClick={() => this.props.deleteFile(file)}
+                { 
+                    Object.keys(fileListObject).map(fileName => (
+                        <li
+                            key={fileName}
                         >
-                            delete
-                        </button>
-                    </li>
-
-                )) }
+                            <span
+                                onClick={() => this.props.selectFile(fileName)}
+                            >
+                                {fileName}
+                            </span>
+                            <button
+                                onClick={() => this.props.deleteFile(fileName)}
+                            >
+                                delete
+                            </button>
+                        </li>
+                    )) 
+                }
             </ul>
         )
     }
@@ -32,12 +35,11 @@ class FileList extends Component {
 
 
 const mapStateToProps = state => ({
-    fileList: state.playgroundReducer.fileList,
+    fileListObject: state.playgroundReducer.fileListObject,
 })
 
 const mapDispatchToProps = {
     deleteFile: actions.playgroundActions.deleteFile,
-    renameFile: actions.playgroundActions.renameFile,
     selectFile: actions.playgroundActions.selectFile,
 }
 

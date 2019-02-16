@@ -8,7 +8,12 @@ import styles from './Editor.scss';
 export default class Editor extends Component {
     render() {
         return (
-            <div>
+            <div
+                style={{
+                    border: '1px solid black'
+                }}            
+            >
+                Text Editor
                 <FileTab />
                 <TextEditor />
             </div>
