@@ -11,9 +11,9 @@ export default class Editor extends Component {
             <div
                 style={{
                     border: '1px solid black'
-                }}            
+                }}
+                className="Editor"        
             >
-                Text Editor
                 <FileTab />
                 <TextEditor />
             </div>

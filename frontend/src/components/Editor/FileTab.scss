@@ -1,0 +1,23 @@
+.FileTab {
+    height: 38px;
+    background-color: #2f2f2f;
+
+    .FileTab-list {
+        float: left;
+        padding: 0;
+        margin: 16px 0 0 0;
+
+        .FileTab-item {
+            list-style-type: none;
+            width: 118px;
+            padding: 10px 28px 10px 28px;
+        }
+    
+        .FileTab-item-selected {
+            box-shadow: 0 -4px 4px 0 rgba(0, 0, 0, 0.5);
+            background-color: #222222;
+            border-top: 4px solid #e33727;     
+        }
+    }
+
+}

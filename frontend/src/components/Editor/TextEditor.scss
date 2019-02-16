@@ -1,0 +1,46 @@
+.TextEditor {
+    height: 100%;
+
+    .TextEditor-editor {
+        padding: 25px 50px 0 25px;
+        border: 0px;
+
+        height: 100%;
+        width: 100%;
+        resize: none;
+        background-color: #262626;
+        color: #ffffff;
+
+        font-family: NotoSans;
+        font-size: 13px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+    }
+
+    pre {
+        // width: em(440);
+        // margin: 4em auto;
+        // padding: 0.5em;
+        // border-radius: .25em;
+        // box-shadow: .1em .1em .5em rgba(0,0,0,.45);
+        line-height: 0;
+        counter-reset: line;
+        
+        span {
+            display: block;
+            line-height: 1.5rem;
+            
+            &:before {
+                counter-increment: line;
+                content: counter(line);
+                display: inline-block;
+                border-right: 1px solid #ddd;
+                padding: 0 .5em;
+                margin-right: .5em;
+                color: #888
+            }
+        }
+    }
+}

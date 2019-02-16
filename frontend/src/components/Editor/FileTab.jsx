@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ClassNames from 'classnames';
 
 import styles from './FileTab.scss';
 import actions from '../../redux/actions';
@@ -9,13 +10,18 @@ class FileTab extends Component {
         const { currentFileName, tabListSet } = this.props;
 
         return (
-            <div>
-                {currentFileName}
-                <ul>
+            <div className="FileTab">
+                <div
+                    className="FileTab-list"
+                >
                 { 
                     [...tabListSet].map(fileName => (
-                        <li
+                        <span
                             key={fileName + 'tab'}
+                            className={ClassNames({
+                                'FileTab-item': true,
+                                'FileTab-item-selected': fileName === currentFileName,
+                            })}
                         >
                             <span
                                 onClick={() => this.props.selectTab(fileName)}
@@ -25,12 +31,12 @@ class FileTab extends Component {
                             <button
                                 onClick={() => this.props.closeTab(fileName)}
                             >
-                                close
+                                x
                             </button>
-                        </li>
+                        </span>
                     )) 
                 }
-                </ul>
+                </div>
             </div>
         )
     }

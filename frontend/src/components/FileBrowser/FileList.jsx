@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ClassNames from 'classnames';
 
 import styles from './FileList.scss';
 import actions from '../../redux/actions';
 
 class FileList extends Component {
     render() {
-        const { fileListObject } = this.props;
+        const { fileListObject, currentFileName } = this.props;
 
         return (
-            <ul>
+            <ul
+                className="FileList"
+            >
                 { 
                     Object.keys(fileListObject).map(fileName => (
                         <li
                             key={fileName}
+                            className={ClassNames({
+                                "FileList-item": true,
+                                "FileList-item-selected": currentFileName === fileName,
+                            })}
+                            onClick={() => this.props.selectFile(fileName)}
                         >
                             <span
-                                onClick={() => this.props.selectFile(fileName)}
+                                className="FileList-item-text"
                             >
                                 {fileName}
                             </span>
-                            <button
-                                onClick={() => this.props.deleteFile(fileName)}
-                            >
-                                delete
-                            </button>
                         </li>
                     )) 
                 }
@@ -36,6 +39,7 @@ class FileList extends Component {
 
 const mapStateToProps = state => ({
     fileListObject: state.playgroundReducer.fileListObject,
+    currentFileName: state.playgroundReducer.currentFileName,
 })
 
 const mapDispatchToProps = {

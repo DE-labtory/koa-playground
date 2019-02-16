@@ -1,0 +1,24 @@
+.FileList {
+    padding: 0px;
+
+    .FileList-item {
+        list-style-type: none;
+        padding: 6px 88px 6px 19px;
+        width: 100%;
+        height: 28px;
+        vertical-align: middle;
+
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .FileList-item-selected {
+        background-color: #740102;
+    }
+
+    .FileList-item-text {
+        font-family: AppleSDGothicNeo;
+        font-size: 13px;
+    }
+}

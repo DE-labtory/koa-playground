@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 
 import ButtonTab from './ButtonTab';
-import FileList from './FileList';
+import ResultTab from './ResultTab';
 
-import styles from './FileBrowser.scss';
+import styles from './Options.scss';
 
-export default class FileBrowser extends Component {
+export default class Options extends Component {
     render() {
         return (
             <div
                 style={{
                     border: '1px solid black'
-                }}
-                className="FileBrowser"
+                }}       
+                className="Options"     
             >
+                Options
                 <ButtonTab />
-                <FileList />
+                <ResultTab />
             </div>
         )
     }

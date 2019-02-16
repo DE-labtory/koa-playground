@@ -16,7 +16,9 @@ class ButtonTab extends Component {
 
     render() {
         return (
-            <div>
+            <div
+                className="ButtonTab"
+            >
                 <input 
                     value={this.state.newFileName}
                     onChange={(e) => this.setState({

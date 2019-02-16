@@ -25,11 +25,13 @@ export default (state = initState, action) => {
         case AT.UPDATE_FILE:
         case AT.DELETE_FILE:
             delete state.fileListObject[action.payload];
+            state.tabListSet.delete(action.payload);
             return {
                 ...state,
                 fileListObject: {
                     ...state.fileListObject
                 },
+                tabListSet: new Set([...state.tabListSet]),
             }
         case AT.SELECT_FILE:
             return {
