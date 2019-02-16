@@ -1,0 +1,7 @@
+export default {
+    ADD_FILE: 'AT:ADD_FILE',
+    GET_FILE: 'AT:GET_FILE',
+    UPDATE_FILE: 'AT:UPDATE_FILE',
+    DELETE_FILE: 'AT:DELETE_FILE',
+    SELECT_FILE: 'AT:SELECT_FILE',
+};

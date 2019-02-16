@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import styles from './FileTab.scss';
 
-export default class FileTab extends Component {
+class FileTab extends Component {
     render() {
         return (
             <div>
@@ -11,3 +12,9 @@ export default class FileTab extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    
+}
+
+export default connect()(FileTab);
