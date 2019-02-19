@@ -6,6 +6,28 @@ import styles from './FileList.scss';
 import actions from '../../redux/actions';
 
 class FileList extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            isContextMenuOpened: false,
+            contextMenuFileName: '',
+        }
+
+        this.handleContextMenu = this.handleContextMenu.bind(this);
+    }
+
+    handleContextMenu(e) {
+        e.preventDefault();
+
+        this.setState({
+            isContextMenuOpened: true,
+            contextMenuFileName: e.target.value,
+        })
+        console.log(e.target);
+        // Open Context Menu
+    }
+
     render() {
         const { fileListObject, currentFileName } = this.props;
 
@@ -22,12 +44,25 @@ class FileList extends Component {
                                 "FileList-item-selected": currentFileName === fileName,
                             })}
                             onClick={() => this.props.selectFile(fileName)}
+                            onContextMenu={this.handleContextMenu}
                         >
                             <span
                                 className="FileList-item-text"
                             >
                                 {fileName}
                             </span>
+                            <div
+                                style={{
+                                    display: (this.state.isContextMenuOpened && this.state.contextMenuFileName === currentFileName)? 'block': 'none'
+                                }}
+                            >
+                                <span>
+                                    Rename
+                                </span>
+                                <span>
+                                    Delete
+                                </span>
+                            </div>
                         </li>
                     )) 
                 }
