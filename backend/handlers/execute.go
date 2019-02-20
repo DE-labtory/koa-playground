@@ -39,6 +39,7 @@ func Execute(c echo.Context, db *buntdb.DB) error {
 	}
 
 	fmt.Println("Execute with : ",codes)
+	// implements below from here
 
 	decodedOutput := &renderings.DecodedOutput{Type: "type", Value: "value",}
 
