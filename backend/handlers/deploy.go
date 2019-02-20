@@ -23,27 +23,25 @@ import (
 	"net/http"
 	"github.com/labstack/gommon/log"
 	"github.com/DE-labtory/koa-playground/backend/renderings"
+	"github.com/tidwall/buntdb"
 )
 
-var rawByteCode = "00000001"
+func Deploy(c echo.Context, db *buntdb.DB) error {
+	var request bindings.DeployRequest
 
-// TODO Of course, this code is a joke! and in fact the code to be implemented must return the address to which it will run.
-var address = "NAVER GREEN FACTORY, 6, Buljeong-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, Republic of Korea"
-
-func Deploy(c echo.Context) error {
-
-	// TODO When the compiler is finished, we're going to implement all comments below!
-	// request := c.Param("deployRequest")
-	request := &bindings.DeployRequest{
-		RawByteCode: rawByteCode,
-		DateTime:    time.Now().String(),
+	if err := c.Bind(&request); err != nil {
+		return echo.ErrBadRequest
 	}
+
+	request.DateTime = time.Now().String()
+
+	address := KeyGenerate(request.RawByteCode)
+
+	Save(address, request.RawByteCode, db)
 
 	log.Debug(request)
 
-	response := &renderings.DeployResponse{
+	return c.JSON(http.StatusOK, &renderings.DeployResponse{
 		Address: address,
-	}
-
-	return c.JSON(http.StatusOK, response)
+	})
 }

@@ -20,33 +20,32 @@ import (
 	"github.com/labstack/echo"
 	"net/http"
 	"github.com/DE-labtory/koa-playground/backend/bindings"
-	"github.com/labstack/gommon/log"
 	"github.com/DE-labtory/koa-playground/backend/renderings"
 	"math"
 	"time"
+	"github.com/tidwall/buntdb"
+	"fmt"
 )
+func Execute(c echo.Context, db *buntdb.DB) error {
+	var request bindings.ExecuteRequest
 
-func Execute(c echo.Context) error {
-
-	//request := c.Param("ExecuteRequest")
-	request := &bindings.ExecuteRequest{
-		Address:          address,
-		FunctionSelector: "I LIKE GOLANG!",
-		Params:           []bindings.Param{},
+	if err := c.Bind(&request); err != nil {
+		return echo.ErrBadRequest
 	}
 
-	log.Debug(request)
+	codes, err := FindCodesByKey(request.Address, db)
+	if err != nil {
+		return echo.ErrBadRequest
+	}
+
+	fmt.Println("Execute with : ",codes)
 
 	decodedOutput := &renderings.DecodedOutput{Type: "type", Value: "value",}
 
-	log.Debug(decodedOutput)
-
-	response := &renderings.ExecuteResponse{
+	return c.JSON(http.StatusOK, &renderings.ExecuteResponse{
 		EncodedOutput: "encodedOutput",
 		DecodedOutput: *decodedOutput,
 		Cost:          int(math.MaxUint64 >> 1),
 		ExecutionTime: int(time.Now().Unix()),
-	}
-
-	return c.JSON(http.StatusOK, response)
+	})
 }
