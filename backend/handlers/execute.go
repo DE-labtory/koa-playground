@@ -24,9 +24,10 @@ import (
 	"github.com/DE-labtory/koa-playground/backend/renderings"
 	"math"
 	"time"
+	"github.com/tidwall/buntdb"
 )
-
-func Execute(c echo.Context) error {
+var address = "NAVER GREEN FACTORY, 6, Buljeong-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, Republic of Korea"
+func Execute(c echo.Context, db *buntdb.DB) error {
 
 	//request := c.Param("ExecuteRequest")
 	request := &bindings.ExecuteRequest{

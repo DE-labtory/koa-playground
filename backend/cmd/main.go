@@ -17,11 +17,12 @@
 package main
 
 import (
-	"koa-playground/backend/middlewares"
+	"github.com/DE-labtory/koa-playground/backend/middlewares"
 
 	"github.com/DE-labtory/koa-playground/backend/handlers"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+	"github.com/DE-labtory/koa-playground/backend/config"
 )
 
 func main() {
@@ -32,12 +33,18 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
+	db := config.InitDB()
+
 	// Routes
 	e.GET("/", handlers.Ping)
 
 	e.POST("/compile", handlers.Compile)
-	e.POST("/deploy", handlers.Deploy)
-	e.POST("/execute", handlers.Execute)
+	e.POST("/deploy", func(c echo.Context) error {
+		return handlers.Deploy(c, &db)
+	})
+	e.POST("/execute", func(c echo.Context) error {
+		return handlers.Execute(c, &db)
+	})
 
 	// log 테스트
 	middlewares.Info("%d %s logging ", 1, "INFO")

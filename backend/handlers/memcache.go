@@ -3,9 +3,18 @@ package handlers
 import (
 	"github.com/tidwall/buntdb"
 	"time"
+	"crypto/sha1"
 )
 
 var defaultExpireHours = 4
+
+func KeyGenerate(rawByteCode string) string {
+	s1 := sha1.New()
+
+	s1.Write([]byte(rawByteCode))
+
+	return string(s1.Sum(nil))
+}
 
 func Save(key, value string, db *buntdb.DB) error {
 	return SaveWithTTL(key, value, db, 1)
