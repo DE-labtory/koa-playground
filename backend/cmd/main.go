@@ -17,6 +17,8 @@
 package main
 
 import (
+	"koa-playground/backend/middlewares"
+
 	"github.com/DE-labtory/koa-playground/backend/handlers"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -37,6 +39,10 @@ func main() {
 	e.POST("/deploy", handlers.Deploy)
 	e.POST("/execute", handlers.Execute)
 
+	// log 테스트
+	middlewares.Info("%d %s logging ", 1, "INFO")
+	middlewares.Warnning("%d %s logging", 2, "WARNNING")
+	middlewares.Error("%d %s logging", 3, "ERROR")
 
 	// Start server
 	e.Logger.Fatal(e.Start(":8080"))
