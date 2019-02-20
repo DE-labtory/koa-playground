@@ -25,29 +25,28 @@ import (
 	"math"
 	"time"
 	"github.com/tidwall/buntdb"
+	"fmt"
 )
-var address = "NAVER GREEN FACTORY, 6, Buljeong-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, Republic of Korea"
 func Execute(c echo.Context, db *buntdb.DB) error {
+	var request bindings.ExecuteRequest
 
-	//request := c.Param("ExecuteRequest")
-	request := &bindings.ExecuteRequest{
-		Address:          address,
-		FunctionSelector: "I LIKE GOLANG!",
-		Params:           []bindings.Param{},
+	if err := c.Bind(&request); err != nil {
+		return echo.ErrBadRequest
 	}
 
-	log.Debug(request)
+	codes, err := FindCodesByKey(request.Address, db)
+	if err != nil {
+		return echo.ErrBadRequest
+	}
+
+	fmt.Println("Execute with : ",codes)
 
 	decodedOutput := &renderings.DecodedOutput{Type: "type", Value: "value",}
 
-	log.Debug(decodedOutput)
-
-	response := &renderings.ExecuteResponse{
+	return c.JSON(http.StatusOK, &renderings.ExecuteResponse{
 		EncodedOutput: "encodedOutput",
 		DecodedOutput: *decodedOutput,
 		Cost:          int(math.MaxUint64 >> 1),
 		ExecutionTime: int(time.Now().Unix()),
-	}
-
-	return c.JSON(http.StatusOK, response)
+	})
 }
