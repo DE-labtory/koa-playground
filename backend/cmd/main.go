@@ -45,6 +45,5 @@ func main() {
 	middlewares.Error("%d %s logging", 3, "ERROR")
 
 	// Start server
-	e.Logger.Fatal(e.Start(":1323"))
-
+	e.Logger.Fatal(e.Start(":8080"))
 }
