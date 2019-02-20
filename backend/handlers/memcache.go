@@ -4,8 +4,6 @@ import (
 	"github.com/tidwall/buntdb"
 	"time"
 	"crypto/sha1"
-	"github.com/ethereum/go-ethereum/swarm/storage/mock/db"
-	"fmt"
 )
 
 var defaultExpireHours = 4

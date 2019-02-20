@@ -20,7 +20,6 @@ import (
 	"github.com/labstack/echo"
 	"net/http"
 	"github.com/DE-labtory/koa-playground/backend/bindings"
-	"github.com/labstack/gommon/log"
 	"github.com/DE-labtory/koa-playground/backend/renderings"
 	"math"
 	"time"
