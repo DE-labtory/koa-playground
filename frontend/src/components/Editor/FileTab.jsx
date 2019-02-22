@@ -24,14 +24,19 @@ class FileTab extends Component {
                             })}
                         >
                             <span
+                                className="FileTab-item-text"
                                 onClick={() => this.props.selectTab(fileName)}
                             >
                                 {fileName}
                             </span>
                             <button
+                                className="FileTab-close-btn"
                                 onClick={() => this.props.closeTab(fileName)}
                             >
-                                x
+                                <div
+                                    className="FileTab-close-btn-ic"
+                                > 
+                                </div>
                             </button>
                         </span>
                     )) 

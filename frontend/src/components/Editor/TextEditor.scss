@@ -1,14 +1,14 @@
 .TextEditor {
-    height: 100%;
+    height: calc(100vh - 88px);
 
     .TextEditor-editor {
-        padding: 25px 50px 0 25px;
+        padding: 25px 50px 10px 25px;
         border: 0px;
 
         height: 100%;
         width: 100%;
         resize: none;
-        background-color: #262626;
+        background-color: #131921;
         color: #ffffff;
 
         font-family: NotoSans;
@@ -17,6 +17,10 @@
         font-style: normal;
         font-stretch: normal;
         line-height: normal;
+
+        &:focus {
+            outline-width: 0px;
+        }
     }
 
     pre {

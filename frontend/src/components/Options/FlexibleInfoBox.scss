@@ -1,0 +1,50 @@
+.FlexibleInfoBox {
+    width: 416px;
+    
+    .FlexibleInfoBox-message-box {
+        width: 368px;
+        height: 88px;
+        background-color: #1d2633;
+        margin: 28px 16px 14px 16px;
+
+        .FlexibleInfoBox-message-box-title {
+            width: 318px;
+            .FlexibleInfoBox-message-box-title-ic {
+                display: inline-block;
+                background-image: url('../../assets/icon/ic-success.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                width: 14px;
+                height: 14px;                
+                margin: 14px 10px 0px 24px;
+            }
+
+            .FlexibleInfoBox-message-box-title-text {
+                display: inline-block;
+                font-size: 18px;
+            }
+        }
+
+        .FlexibleInfoBox-message-box-body {
+            display: flex;
+            justify-content: space-between;
+            .FlexibleInfoBox-message-box-body-text {
+                width: 318px;
+                display: inline-block;
+                opacity: 0.6;
+                font-size: 13px;
+                margin: 7px 10px 0px 24px;
+            }
+
+            &::after {
+                background-image: url('../../assets/icon/ic-close.png');
+                background-size: 14px 14px;
+                display: inline-block;
+                width: 14px; 
+                height: 14px;
+                content:"";
+                margin-right: 15px;       
+            }
+        }     
+    }  
+}

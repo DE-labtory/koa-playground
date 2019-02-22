@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import ButtonTab from './ButtonTab';
+import BrowserButtonTab from './BrowserButtonTab';
 import FileList from './FileList';
 
 import styles from './FileBrowser.scss';
@@ -9,12 +9,9 @@ export default class FileBrowser extends Component {
     render() {
         return (
             <div
-                style={{
-                    border: '1px solid black'
-                }}
                 className="FileBrowser"
             >
-                <ButtonTab />
+                <BrowserButtonTab />
                 <FileList />
             </div>
         )

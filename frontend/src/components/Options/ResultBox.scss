@@ -1,0 +1,46 @@
+.ResultBox {
+    display: block;
+    background-color: #161d26;
+    height: calc(100vh - 338px);
+    
+
+    .ResultBox-box {
+        .ResultBox-compile {
+            width: 90%;
+            margin: 30px 24px;
+            display: inline-block;            
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .ResultBox-deploy {
+            width: 90%;
+            margin: 30px 24px;
+            display: inline-block;            
+            color: rgba(255, 255, 255, 0.4);
+        }   
+
+        .ResultBox-run {
+            width: 90%;
+            margin: 30px 24px;
+            display: inline-block;            
+            color: rgba(255, 255, 255, 0.4);
+
+        }      
+
+        .ResultBox-title {
+            background-color: #131921;
+            padding: 7px 24px;
+        }
+        .ResultBox-text {
+            margin: 8px 0px 16px 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }        
+    }
+    
+}

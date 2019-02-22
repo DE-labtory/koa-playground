@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
+import FlexibleInfoBox from './FlexibleInfoBox';
 import ButtonTab from './ButtonTab';
-import ResultTab from './ResultTab';
+import ExecuteBtn from './ExecuteBtn';
+import FixedInfoBox from './FixedInfoBox';
+import ResultBox from './ResultBox';
 
 import styles from './Options.scss';
 
@@ -9,14 +12,13 @@ export default class Options extends Component {
     render() {
         return (
             <div
-                style={{
-                    border: '1px solid black'
-                }}       
                 className="Options"     
             >
-                Options
+                {/* TODO : 추가 <FlexibleInfoBox /> */}
                 <ButtonTab />
-                <ResultTab />
+                <ExecuteBtn />
+                <FixedInfoBox />
+                <ResultBox />
             </div>
         )
     }

@@ -1,10 +1,13 @@
 .FileList {
     padding: 0px;
+    margin: 0px;
 
     .FileList-item {
+        display: flex;
+        align-items: center;
         list-style-type: none;
-        padding: 6px 88px 6px 19px;
-        width: 100%;
+        padding: 8px 20px;
+        width: calc(176px - 20 * 2px);
         height: 28px;
         vertical-align: middle;
 
