@@ -17,12 +17,13 @@
 package handlers
 
 import (
-	"github.com/labstack/echo"
-	"github.com/DE-labtory/koa-playground/backend/bindings"
-	"time"
 	"net/http"
-	"github.com/labstack/gommon/log"
+	"time"
+
+	"github.com/DE-labtory/koa-playground/backend/bindings"
 	"github.com/DE-labtory/koa-playground/backend/renderings"
+	"github.com/labstack/echo"
+	"github.com/labstack/gommon/log"
 	"github.com/tidwall/buntdb"
 )
 
@@ -30,7 +31,7 @@ func Deploy(c echo.Context, db *buntdb.DB) error {
 	var request bindings.DeployRequest
 
 	if err := c.Bind(&request); err != nil {
-		return echo.ErrBadRequest
+		return c.JSON(http.StatusBadRequest, err)
 	}
 
 	request.DateTime = time.Now().String()

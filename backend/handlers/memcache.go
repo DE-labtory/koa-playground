@@ -1,9 +1,10 @@
 package handlers
 
 import (
-	"github.com/tidwall/buntdb"
-	"time"
 	"crypto/sha1"
+	"time"
+
+	"github.com/tidwall/buntdb"
 )
 
 var defaultExpireHours = 4

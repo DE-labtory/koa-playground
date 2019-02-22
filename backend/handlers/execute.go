@@ -17,31 +17,33 @@
 package handlers
 
 import (
-	"github.com/labstack/echo"
+	"fmt"
+	"math"
 	"net/http"
+	"time"
+
 	"github.com/DE-labtory/koa-playground/backend/bindings"
 	"github.com/DE-labtory/koa-playground/backend/renderings"
-	"math"
-	"time"
+	"github.com/labstack/echo"
 	"github.com/tidwall/buntdb"
-	"fmt"
 )
+
 func Execute(c echo.Context, db *buntdb.DB) error {
 	var request bindings.ExecuteRequest
 
 	if err := c.Bind(&request); err != nil {
-		return echo.ErrBadRequest
+		return c.JSON(http.StatusBadRequest, err)
 	}
 
 	codes, err := FindCodesByKey(request.Address, db)
 	if err != nil {
-		return echo.ErrBadRequest
+		return c.JSON(http.StatusBadRequest, err)
 	}
 
-	fmt.Println("Execute with : ",codes)
+	fmt.Println("Execute with : ", codes)
 	// implements below from here
 
-	decodedOutput := &renderings.DecodedOutput{Type: "type", Value: "value",}
+	decodedOutput := &renderings.DecodedOutput{Type: "type", Value: "value"}
 
 	return c.JSON(http.StatusOK, &renderings.ExecuteResponse{
 		EncodedOutput: "encodedOutput",

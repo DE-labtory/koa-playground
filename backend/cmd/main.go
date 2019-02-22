@@ -19,11 +19,12 @@ package main
 import (
 	"github.com/DE-labtory/koa-playground/backend/middlewares"
 
+	"net/http"
+
+	"github.com/DE-labtory/koa-playground/backend/config"
 	"github.com/DE-labtory/koa-playground/backend/handlers"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/DE-labtory/koa-playground/backend/config"
-	"net/http"
 )
 
 func main() {

@@ -17,39 +17,32 @@
 package handlers
 
 import (
-	"github.com/labstack/echo"
 	"net/http"
+
+	"github.com/DE-labtory/koa"
 	"github.com/DE-labtory/koa-playground/backend/bindings"
 	"github.com/DE-labtory/koa-playground/backend/renderings"
-	"github.com/DE-labtory/koa/abi"
+	"github.com/labstack/echo"
 	"github.com/labstack/gommon/log"
 )
 
-var helloWorld = `contract {
-    func hello() string{
-        return "hello world!"
-    }
-}`
-
 func Compile(c echo.Context) error {
+	request := &bindings.CompileRequest{}
+	if err := c.Bind(request); err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
 
-	// TODO When the compiler is finished, we're going to implement all comments below!
-	// request := c.Param("CompileRequest")
-
-	request := &bindings.CompileRequest{
-		Code: helloWorld,
+	asm, ab, err := koa.Compile(request.Code)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err)
 	}
 
 	log.Debug(request)
 
-	// byteCodes, err :=  something.Compile(request.Code)
-	byteCodes := []byte(request.Code)
-
-	// TODO I used some random value that can use to create a value to return.
 	response := &renderings.CompileResponse{
-		ABI:         abi.ABI{},
-		RawByteCode: byteCodes,
-		ASM:         []string{request.Code},
+		ABI:         ab,
+		RawByteCode: asm.ToRawByteCode(),
+		ASM:         asm.String(),
 	}
 
 	return c.JSON(http.StatusOK, response)
