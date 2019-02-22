@@ -17,17 +17,19 @@
 package handlers
 
 import (
+	"encoding/hex"
 	"net/http"
 	"time"
+
+	"github.com/DE-labtory/leveldb-wrapper"
 
 	"github.com/DE-labtory/koa-playground/backend/bindings"
 	"github.com/DE-labtory/koa-playground/backend/renderings"
 	"github.com/labstack/echo"
 	"github.com/labstack/gommon/log"
-	"github.com/tidwall/buntdb"
 )
 
-func Deploy(c echo.Context, db *buntdb.DB) error {
+func Deploy(c echo.Context, db *leveldbwrapper.DBHandle) error {
 	var request bindings.DeployRequest
 
 	if err := c.Bind(&request); err != nil {
@@ -36,13 +38,24 @@ func Deploy(c echo.Context, db *buntdb.DB) error {
 
 	request.DateTime = time.Now().String()
 
-	address := KeyGenerate(request.RawByteCode)
+	address, err := hex.DecodeString(KeyGenerate(request.RawByteCode))
+	if err != nil {
+		return err
+	}
 
-	Save(address, request.RawByteCode, db)
+	rawByteCode, err := hex.DecodeString(request.RawByteCode)
+	if err != nil {
+		return err
+	}
+
+	err = db.Put(address, rawByteCode, true)
+	if err != nil {
+		return err
+	}
 
 	log.Debug(request)
 
 	return c.JSON(http.StatusOK, &renderings.DeployResponse{
-		Address: address,
+		Address: hex.EncodeToString(address),
 	})
 }

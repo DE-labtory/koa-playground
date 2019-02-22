@@ -18,12 +18,10 @@ package renderings
 
 type ExecuteResponse struct {
 	EncodedOutput string
-	DecodedOutput DecodedOutput
 	Cost          int
 	ExecutionTime int
 }
 
 type DecodedOutput struct {
-	Type  string
 	Value string
 }

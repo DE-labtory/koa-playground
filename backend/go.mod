@@ -2,10 +2,13 @@ module github.com/DE-labtory/koa-playground/backend
 
 require (
 	github.com/DE-labtory/koa v0.0.0-20190221134738-c219f116cb4d
+	github.com/DE-labtory/leveldb-wrapper v0.0.0-20180403110110-d93f6a347e30
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/fatih/color v1.7.0
+	github.com/it-chain/leveldb-wrapper v0.0.0-20180403110110-d93f6a347e30 // indirect
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/gommon v0.2.8
+	github.com/syndtr/goleveldb v1.0.0 // indirect
 	github.com/tidwall/btree v0.0.0-20170113224114-9876f1454cf0 // indirect
 	github.com/tidwall/buntdb v1.0.0
 	github.com/tidwall/gjson v1.2.1 // indirect

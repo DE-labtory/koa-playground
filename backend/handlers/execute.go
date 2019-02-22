@@ -17,38 +17,84 @@
 package handlers
 
 import (
-	"fmt"
+	"encoding/hex"
+	"errors"
 	"math"
 	"net/http"
+	"strconv"
 	"time"
+
+	"github.com/DE-labtory/koa"
+	"github.com/DE-labtory/koa/abi"
+	"github.com/DE-labtory/leveldb-wrapper"
 
 	"github.com/DE-labtory/koa-playground/backend/bindings"
 	"github.com/DE-labtory/koa-playground/backend/renderings"
 	"github.com/labstack/echo"
-	"github.com/tidwall/buntdb"
 )
 
-func Execute(c echo.Context, db *buntdb.DB) error {
+func Execute(c echo.Context, db *leveldbwrapper.DBHandle) error {
 	var request bindings.ExecuteRequest
 
 	if err := c.Bind(&request); err != nil {
 		return c.JSON(http.StatusBadRequest, err)
 	}
 
-	codes, err := FindCodesByKey(request.Address, db)
+	addr, err := hex.DecodeString(request.Address)
 	if err != nil {
-		return c.JSON(http.StatusBadRequest, err)
+		return err
 	}
 
-	fmt.Println("Execute with : ", codes)
-	// implements below from here
+	val, err := db.Get(addr)
+	if err != nil {
+		return err
+	}
 
-	decodedOutput := &renderings.DecodedOutput{Type: "type", Value: "value"}
+	fnSel := abi.Selector(request.FunctionSignature)
+	params, err := encodeParams(request.Params)
+	if err != nil {
+		return err
+	}
+
+	result, err := koa.Execute(val, fnSel, params)
+	if err != nil {
+		return err
+	}
 
 	return c.JSON(http.StatusOK, &renderings.ExecuteResponse{
-		EncodedOutput: "encodedOutput",
-		DecodedOutput: *decodedOutput,
+		EncodedOutput: hex.EncodeToString(result),
 		Cost:          int(math.MaxUint64 >> 1),
 		ExecutionTime: int(time.Now().Unix()),
 	})
+}
+
+func encodeParams(params []bindings.Param) ([]byte, error) {
+	ps := make([]interface{}, len(params))
+	for i, p := range params {
+		switch p.Type {
+		case "int":
+			val, err := strconv.Atoi(p.Value)
+			if err != nil {
+				return nil, err
+			}
+			ps[i] = val
+		case "bool":
+			val, err := strconv.ParseBool(p.Value)
+			if err != nil {
+				return nil, err
+			}
+			ps[i] = val
+		case "string":
+			ps[i] = p.Value
+		default:
+			return nil, errors.New("unexpected param type, abort")
+		}
+	}
+
+	result, err := abi.Encode(ps...)
+	if err != nil {
+		return nil, err
+	}
+
+	return result, nil
 }

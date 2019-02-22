@@ -46,10 +46,10 @@ func main() {
 
 	e.POST("/compile", handlers.Compile)
 	e.POST("/deploy", func(c echo.Context) error {
-		return handlers.Deploy(c, &db)
+		return handlers.Deploy(c, db)
 	})
 	e.POST("/execute", func(c echo.Context) error {
-		return handlers.Execute(c, &db)
+		return handlers.Execute(c, db)
 	})
 
 	// log 테스트

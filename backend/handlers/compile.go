@@ -17,6 +17,7 @@
 package handlers
 
 import (
+	"encoding/hex"
 	"net/http"
 
 	"github.com/DE-labtory/koa"
@@ -34,6 +35,7 @@ func Compile(c echo.Context) error {
 
 	asm, ab, err := koa.Compile(request.Code)
 	if err != nil {
+		log.Error(err)
 		return c.JSON(http.StatusBadRequest, err)
 	}
 
@@ -41,7 +43,7 @@ func Compile(c echo.Context) error {
 
 	response := &renderings.CompileResponse{
 		ABI:         ab,
-		RawByteCode: asm.ToRawByteCode(),
+		RawByteCode: hex.EncodeToString(asm.ToRawByteCode()),
 		ASM:         asm.String(),
 	}
 

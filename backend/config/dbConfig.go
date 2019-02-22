@@ -1,15 +1,11 @@
 package config
 
 import (
-	"github.com/labstack/gommon/log"
-	"github.com/tidwall/buntdb"
+	"github.com/DE-labtory/leveldb-wrapper"
 )
 
-func InitDB() buntdb.DB {
-	db, err := buntdb.Open(":memory:")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return *db
+func InitDB() *leveldbwrapper.DBHandle {
+	path := "./data.db"
+	provider := leveldbwrapper.CreateNewDBProvider(path)
+	return provider.GetDBHandle("contracts")
 }
