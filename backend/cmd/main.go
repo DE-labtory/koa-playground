@@ -19,11 +19,12 @@ package main
 import (
 	"github.com/DE-labtory/koa-playground/backend/middlewares"
 
+	"net/http"
+
+	"github.com/DE-labtory/koa-playground/backend/config"
 	"github.com/DE-labtory/koa-playground/backend/handlers"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/DE-labtory/koa-playground/backend/config"
-	"net/http"
 )
 
 func main() {
@@ -45,10 +46,10 @@ func main() {
 
 	e.POST("/compile", handlers.Compile)
 	e.POST("/deploy", func(c echo.Context) error {
-		return handlers.Deploy(c, &db)
+		return handlers.Deploy(c, db)
 	})
 	e.POST("/execute", func(c echo.Context) error {
-		return handlers.Execute(c, &db)
+		return handlers.Execute(c, db)
 	})
 
 	// log 테스트

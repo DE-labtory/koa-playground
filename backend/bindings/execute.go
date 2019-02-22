@@ -18,9 +18,9 @@ package bindings
 
 // URL : /execute
 type ExecuteRequest struct {
-	Address          string
-	FunctionSelector string
-	Params           []Param
+	Address           string
+	FunctionSignature string
+	Params            []Param
 }
 
 type Param struct {

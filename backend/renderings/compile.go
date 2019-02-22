@@ -22,6 +22,6 @@ import (
 
 type CompileResponse struct {
 	ABI         abi.ABI
-	RawByteCode []byte
-	ASM         []string
+	RawByteCode string
+	ASM         string
 }
