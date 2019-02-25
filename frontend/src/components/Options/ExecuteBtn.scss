@@ -1,0 +1,32 @@
+.ExecuteBtn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 16px;
+    background-color: #19212c;
+        
+    .ExecuteBtn {
+        width: 360px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ffffff;
+        border-radius: 3px;
+        opacity: 0.1;
+    
+        .ExecuteBtn-text {
+            font-size: 18px;
+        }
+    
+        
+    }
+
+    .ExecuteBtn-activated {
+        background-color: #ffbf00;
+        color: #131921;
+        font-weight: bold;
+        opacity: 1.0;
+        border: 0px;
+    }    
+}

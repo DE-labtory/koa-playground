@@ -1,0 +1,13 @@
+.FixedInfoBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    padding: 20px 0 25px 0;
+    background-color: #19212c;
+
+    .FixedInfoBox-text {
+        display: block;
+        width: 350px;
+    }
+}
