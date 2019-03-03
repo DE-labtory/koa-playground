@@ -36,7 +36,7 @@ const mapStateToProps = (state) => {
             break;
         case EXECUTION_PHASES.RUN:
         case EXECUTION_PHASES.RUN_FINISH:
-            infoText = "블록체인 네트워크에 전송된 바이트코드를 실행(Run) 하세오.";
+            infoText = "블록체인 네트워크에 전송된 바이트코드를 실행(Run) 하세요.";
             break;
     }
     return {
