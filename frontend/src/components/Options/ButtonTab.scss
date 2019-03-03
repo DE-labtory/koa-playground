@@ -4,13 +4,15 @@
     display: flex;
     justify-content: stretch;
     background-color: #19212c;
+    align-items: center;
+
 
     .ButtonBox {
         display: inline-flex;
         justify-content: center;
         align-items: center;
 
-        width: 100%;
+        width: 150px;
         height: 48px;
         color: rgba(255,255,255,0.2);
 
@@ -22,12 +24,24 @@
             cursor: pointer;
         }
     }
-
-    .ButtonBox-processed {
-        border-bottom: 2px solid #d0052c;
+    .Arrow{
+        background-image: url('../../assets/icon/ic-next.png');
+        background-size: 9px 10px;
+        width: 9px;
+        height: 10px;
+        content:"";
     }
+
 
     .ButtonBox-selected {
         color: rgba(255,255,255,1.0);
     }
+}
+
+
+.ButtonBox-processed {
+    border-bottom: 2px solid #d0052c;
+    width: 100%;
+    height: 2px;
+    transition: width .35s linear;
 }

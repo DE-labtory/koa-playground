@@ -18,6 +18,7 @@ export default {
     clickCompile: actionCreator(AT.CLICK_COMPILE),
     clickDeploy: actionCreator(AT.CLICK_DEPLOY),
     clickRun: actionCreator(AT.CLICK_RUN),
+    clickMessageClose: actionCreator(AT.CLICK_MESSAGE_CLOSE),
 
     compile: actionCreator(AT.COMPILE),
     deploy: actionCreator(AT.DEPLOY),

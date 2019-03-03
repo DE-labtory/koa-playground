@@ -14,7 +14,7 @@ export default class Options extends Component {
             <div
                 className="Options"     
             >
-                {/* TODO : 추가 <FlexibleInfoBox /> */}
+                <FlexibleInfoBox />
                 <ButtonTab />
                 <ExecuteBtn />
                 <FixedInfoBox />
