@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import FileTab from './FileTab';
+import CurrentFileInfo from './CurrentFileInfo';
 import TextEditor from './TextEditor';
 
 import styles from './Editor.scss';
@@ -11,7 +11,7 @@ export default class Editor extends Component {
             <div
                 className="Editor"        
             >
-                <FileTab />
+                <CurrentFileInfo />
                 <TextEditor />
             </div>
         )

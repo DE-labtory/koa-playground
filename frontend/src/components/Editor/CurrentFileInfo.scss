@@ -1,0 +1,55 @@
+.CurrentFileInfo {
+  height: 43px;
+  font-family: NotoSans;
+  font-weight: bold;
+  align-items: center;
+  font-size: 13px;
+  float: left;
+  display: flex;
+
+  .CurrentFileInfo-ic {
+    margin-left: 35px;
+    margin-right: 8px;
+    background: url('../../assets/icon/ic-file-active.png') no-repeat;
+    background-size: 10px 12.5px;
+    width: 10px;
+    height: 12.5px;
+  }
+
+}
+
+.CurrentFileInfoButtonTab {
+  float: right;
+  display: flex;
+  height: 43px;
+  align-items: center;
+  .CurrentFileInfoButtonTab-btn {
+    display: flex;
+    height: 23px;
+    align-items: center;
+    border-radius: 11.5px;
+    border: solid 1px #979797;
+    background-color: #1a1a1a;
+    padding-right: 12px;
+    font-family: NotoSans;
+    color: #979797;
+    margin-right: 12px;
+    .CurrentFileInfoButtonTab-reset-ic {
+      margin-left: 6px;
+      margin-right: 4.5px;
+      background: url(../../assets/icon/ic-open.png) no-repeat;
+      background-size: cover;
+      width: 7.5px;
+      height: 8.5px;
+    }
+
+    .CurrentFileInfoButtonTab-export-ic {
+      margin-left: 6px;
+      margin-right: 4.5px;
+      background: url(../../assets/icon/ic-open.png) no-repeat;
+      background-size: cover;
+      width: 7.5px;
+      height: 8.5px;
+    }
+  }
+}
