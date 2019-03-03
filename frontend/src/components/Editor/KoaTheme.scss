@@ -1,0 +1,57 @@
+.ace-tm .ace_gutter {
+  background: #131921;
+  color: #cccccc
+}
+
+.ace_print-margin {
+  width: 1px;
+  background: #e8e8e8
+}
+
+.ace_content
+{
+  background-color: #131921;
+  color: white;
+}
+.ace_cursor {
+  color: white;
+}
+
+.ace_marker-layer .ace_step {
+  background: rgb(198, 219, 174)
+}
+
+.ace_marker-layer .ace_bracket {
+  margin: -1px 0 0 -1px;
+  border: 1px solid #3B3A32
+}
+
+
+.ace-tm .ace_marker-layer .ace_active-line {
+  background: #0e1117
+}
+
+.ace-tm .ace_gutter-active-line {
+  background-color: #0e1117;
+}
+
+.ace_fold {
+  background-color: #50fa7b;
+  border-color: #f8f8f2
+}
+
+.ace_koa_keyword{
+  color : #69b9f6;
+}
+
+.ace_koa_bool{
+  color : #c788d9;
+}
+
+.ace_koa_contract{
+  color: #37e84a;
+}
+
+.ace_koa_string{
+  color: #416f38;
+}
